@@ -76,6 +76,12 @@
 			
 				$color = mysql_query("select id_write from write_to_order where id_write='$residwrite[0]' and varification='1'");
 				$rescol = mysql_fetch_array($color);
+				
+				//$empl = mysql_query("select id_employee from employee");
+				//$resempl = mysql_fetch_array($empl);
+				
+				//$e_name = mysql_query("select e_name from employee where id_employee='$resempl[0]'");
+				//$resempl = mysql_fetch_array($empl);
 						echo "<div class='items'>
 							<div class='item-card'>";
 						if($rescol!=0){
