@@ -9,8 +9,6 @@
   <link rel="shortcut icon" href="img/minilogo.png" width="15" height="25" type="image/x-icon">
 </head>
 <body>
-
-<!-- Header -->
  	<header class="admin">
  		<div class="container">
 			
@@ -50,32 +48,80 @@
 		</div>
 	</header>
 	<main>
-		<div class="container">
-			<table>
-			<?php 
-				$all = mysql_query("select id_service from service");
-	          	while($resall = mysql_fetch_array($all)){
-					$name = mysql_query("SELECT distinct name_service FROM service WHERE id_service='$resall[0]'");
-					$resname = mysql_fetch_array($name);
-					$about = mysql_query("SELECT about_service FROM service WHERE id_service='$resall[0]'");
-					$resabout = mysql_fetch_array($about);
-					$price = mysql_query("SELECT price FROM service WHERE id_service='$resall[0]'");
-					$resprice = mysql_fetch_array($price);
-					echo "
-    					<tr>
-        					<td>".$resname[0]."</td>
-							
-        						<td>".$resabout[0]."</td>
-								<td>".$resprice[0]."</td>
-    						
-    					</tr>
-					
+		<div class="container">	
+		<?php
+			echo "
+				<form method='post' action='services.php'>
+					<div class='cal'>
+				";
+			$name = mysql_query("select distinct name_service from service");
+			$count=0;
+			while($result = mysql_fetch_array($name)){
+				$count++;
+				echo "
+						<div style='display:block'>
+							<input type='checkbox' class='cb' name='name_service[]'  value='$result[0]'/>
+							<label for='cb$count'>$result[0]</label>
+						</div>
+				
 					";
-				}
+			}
+			echo "<input type='submit' class='btn' name='mysub' value='Далее'>
+				</div>
+			</form>
+			";
 			?>
-			</table>
-		</div>
-	</main>
-</body>
+			<?
+			if (isset($_POST['mysub'])){
+				$name=$_POST['name_service'];
+				$count = count($name);
+				$i=0;
+				echo "
+						<div class='cal cal2'>";
+				while($i<$count){
+					$about = mysql_query("select about_service from service where name_service='$name[$i]'") or die(mysql_error());
+					while($resabout = mysql_fetch_array($about)){
+						echo "<div style='display:block'>
+								<input type='checkbox' class='about_service' name='about_service[]'  value='$resabout[0]'/>
+								<label for='cb$count'>$resabout[0]</label>
+							 </div>
+							";
+					}
+				$i++;
+				}
+				echo "<input type='submit' class='btn click' name='subsub' value='Далее'>";
+				
+			}
+			echo "
+				</div>
+			<div class='cal cal3'></div>
+			";
+			?>		
+						
+			</div>
+		<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+		<script src="js/script.js"></script>
+		<script>
+			$('.cal2').ready ( function(){
+				$('.click').click(function(){
+					var checked = [];
+					$(':checkbox:checked').each(function () {
+    					checked.push($(this).val());
+					});
+					
+					$.ajax({
+					url: 'select2.php',
+					type: 'post',
+					data: { about_service: checked },
+					success: function(data) {  
+						$('.cal3').html(data);
+						}
+					});
+				});
+			});
+		</script>
+		
+		</main>
+	</body>
 </html>
 	

@@ -1,6 +1,17 @@
 <?php require "tools.php"; 
-$id=$_POST['idid'];
-$date=$_POST['write_date'];
-$time=$_POST['write_time'];
-$query=mysql_query("UPDATE write_to_order SET varification='1',Date_order='$date',Time_order='$time' WHERE id_write='$id'") or die(mysql_error());
+
+	$resprice = $_POST['price'];
+	echo $resprice;
+	$metr=$_POST['metr'];
+	echo $metr;
+	$width = $_POST['width'];
+	echo $width;
+	$height = $_POST['height'];
+	echo $height;
+	$sh = $_POST['sh'];
+	echo $sh;
+	$summ = $resprice*$width*$height+$resprice*$sh+$resprice*$metr;
+	echo $summ;
+	
+
 ?>

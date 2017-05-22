@@ -1,10 +1,3 @@
-/* RESET */
-
-/**
- * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
- * Richard Clark (http://richclarkdesign.com)
- * http://cssreset.com
- */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -1059,8 +1052,12 @@ footer {
 .filter-price {
   margin-bottom: 48px;
 }
+.cal{
+	width: 33%;
+    float: left;
+}
 
-#filter-form:not(#foo) input[type="radio"], input[type="checkbox"] {
+/*#filter-form:not(#foo) input[type="radio"], input[type="checkbox"] {
   display: none;
 }
 
@@ -1126,7 +1123,7 @@ footer {
 .filter-specials {
   margin-top: 53px;
 }
-
+*/
 /* Sorting block */
 
 .sorting {
@@ -1593,7 +1590,22 @@ box-sizing: border-box;
   margin-right: 20px;
   font-size: 12px;
   font-weight: 500;
-  text-transform: uppercase;
+}
+.change-form textarea{
+  height: 55px;
+  padding: 5px;
+}
+.select{
+  width: 220px;
+  height: 38px;
+  border: 2px solid #d7dcde;
+  border-radius: 3px;
+  padding: 0 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 20px;
+  font-weight: 500;
 }
 
 .feedback-form input:hover,
@@ -1607,7 +1619,8 @@ box-sizing: border-box;
 .write-form input:hover,
 .date:hover,
 .me-form input:hover,
-.text-form input:hover{
+.text-form input:hover,
+.select:hover{
     border-color: #a2a9ac;
 }
 
@@ -1621,7 +1634,8 @@ box-sizing: border-box;
 .write-form input:focus,
 .date:focus,
 .me-form input:focus,
-.text-form input:focus{
+.text-form input:focus,
+.select:focus{
     border-color: #56bffb;
 }
 
@@ -1741,11 +1755,11 @@ box-sizing: border-box;
 .feedback-form textarea::-webkit-input-placeholder {
   color: #000000;
   font-size: 12px;
-  text-transform: uppercase;
 }
 .review-form input[type="text"]:disabled, 
 .write-form input[type="text"]:disabled,
-.change-form input[type="text"]:disabled{
+.change-form input:disabled,
+.change-form textarea:disabled{
 	background-color: white;
 }
 
@@ -1754,7 +1768,6 @@ box-sizing: border-box;
 .feedback-form textarea::-moz-placeholder {
   color: #000000;
   font-size: 12px;
-  text-transform: uppercase;
 }
 
 .feedback-form input[type="text"]:-moz-placeholder,
@@ -1762,7 +1775,6 @@ box-sizing: border-box;
 .feedback-form textarea:-moz-placeholder {
   color: #000000;
   font-size: 12px;
-  text-transform: uppercase;
 }
 
 .feedback-form input[type="text"]:-ms-input-placeholder,
@@ -1770,7 +1782,6 @@ box-sizing: border-box;
 .feedback-form textarea:-ms-input-placeholder {
   color: #000000;
   font-size: 12px;
-  text-transform: uppercase;
 }
 
 .feedback-form-animation {

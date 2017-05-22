@@ -367,9 +367,21 @@
 	
 
 <!-- Javascript -->
+	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
 	<script src="owlcarousel/owl.carousel.min.js"></script>
 	<script src="js/script.js"></script>
-	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
-	
+	<script>
+		 // Slider - owl carousel plugin
+ 		control = $(".owl-dot"),
+ 		control_active = $(".owl-dot.active");
+	$('.owl-carousel').owlCarousel({
+		items:1,
+		loop:true,
+		margin:10,
+		autoplay:true,
+		autoplayTimeout:5000,
+		autoplayHoverPause:true
+	  });
+	</script>
 	</body>
 </html>

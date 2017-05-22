@@ -250,7 +250,7 @@
   </form>
 	<div class="overlay_popup"></div>
 <!-- Javascript -->
-	<script src="js/script.js"></script>
 	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

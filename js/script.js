@@ -7,15 +7,6 @@ $('.show_popup').click(function() {
 $('.modal_close').click(function() {
     $('.overlay_popup, .popup').hide();
 })
- // Slider - owl carousel plugin
- control = $(".owl-dot"),
- control_active = $(".owl-dot.active");
 
-$('.owl-carousel').owlCarousel({
-    items:1,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:5000,
-    autoplayHoverPause:true
-  });
+
+

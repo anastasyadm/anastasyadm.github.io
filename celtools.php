@@ -17,10 +17,10 @@
 			
 			<nav>
 				<ul class="menu">
-					<li><a class="active" href="admin.php">Сотрудники</a></li>
+					<li><a href="admin.php">Сотрудники</a></li>
 					<li><a href="review-admin.php">Отзывы</a></li>
 					<li><a href="#">Услуги</a></li>
-					<li><a href="celendar.php">Календарь</a></li>
+					<li><a class="active4" href="celendar.php">Календарь</a></li>
 					<?php
 					if (isset($_POST['logsubmit'])){
 						log_in();}
@@ -68,7 +68,7 @@
 				
 				$time = mysql_query("select date_format(time_order, \"%H:%i\") from write_to_order where id_write='$residwrite[0]'");
 				$restime = mysql_fetch_array($time);
-				$date = mysql_query("select date_format(date_order, \"%d.%m.%y\") from write_to_order where id_write='$residwrite[0]'");
+				$date = mysql_query("select date_format(date_order, \"%d.%m.%Y\") from write_to_order where id_write='$residwrite[0]'");
 				$resdate = mysql_fetch_array($date);
 				$adress = mysql_query("select adress from write_to_order where id_write='$residwrite[0]'");
 				$resad = mysql_fetch_array($adress);
@@ -77,38 +77,72 @@
 				$color = mysql_query("select id_write from write_to_order where id_write='$residwrite[0]' and varification='1'");
 				$rescol = mysql_fetch_array($color);
 				
-				//$empl = mysql_query("select id_employee from employee");
-				//$resempl = mysql_fetch_array($empl);
-				
-				//$e_name = mysql_query("select e_name from employee where id_employee='$resempl[0]'");
-				//$resempl = mysql_fetch_array($empl);
+				//$id_empl = mysql_query("select id_employee from write_to_order where id_employee>0 and varification='1'");
+				//$resid_empl = mysql_fetch_array($id_empl);
 						echo "<div class='items'>
 							<div class='item-card'>";
 						if($rescol!=0){
-							echo "<div class='item-img-wrapper' style='background-color:palegreen;'>";
-						}
-						else{
-							echo "<div class='item-img-wrapper'>";
-						} 					
-                			echo "<div class='item-header'>
+							echo "<div class='item-img-wrapper' style='background-color:palegreen;'>
+									<div class='item-header'>
                   					<span name='surname' style='font-size:medium; font-weight: 500; letter-spacing: 0.035em;'>".$ressurname[0]."</span>
 									<span name='name' style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;'>".$resname[0]."</span>
 									<span style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;'>".$resfullname[0]."</span>
-									<span style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;'>".$resphone[0]."</span>
+									<span style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;display: block; margin-top: 10px;'>".$resphone[0]."</span>
                 				</div>
 								<form method='post' action='celtools.php?day=$day&month=$month' class='change-form'>
-									<input class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$resdate[0].">
-									<input class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$restime[0].">
-									<input class='date' style='font-size:medium;padding-left: 10px;' value=".$resad[0].">
-									<select>
-										<option></option>
-									</select>
-									<input class='date' name='idid' id='write_id' style='font-size:medium;padding-left: 10px;' value=".$residwrite[0]." hidden>";
-						if($rescol==0){
-								echo "<div class='form-login-butt'>
+									<input class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$resdate[0]." disabled>
+									<input class='date time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$restime[0]." disabled>
+									<textarea class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' disabled>$resad[0]</textarea>
+							";
+							$id_empl = mysql_query("select id_employee from write_to_order where id_employee>0 and id_write='$residwrite[0]'");
+							while($resid_empl = mysql_fetch_array($id_empl)){
+								$e_surname = mysql_query("select e_surname from employee where id_employee='$resid_empl[0]'");
+								$resesurname = mysql_fetch_array($e_surname);
+								$e_name = mysql_query("select left(e_name,1) from employee where id_employee='$resid_empl[0]'");
+								$resename = mysql_fetch_array($e_name);
+								$e_fullname = mysql_query("select left(e_fullname,1) from employee where id_employee='$resid_empl[0]'");
+								$resefullname = mysql_fetch_array($e_fullname);
+								echo "<input class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resesurname[0] $resename[0].$resefullname[0].' disabled>";
+							}
+						}
+						else{
+							echo "<div class='item-img-wrapper'>
+									<div class='item-header'>
+										<span name='surname' style='font-size:medium; font-weight: 500; letter-spacing: 0.035em;'>".$ressurname[0]."</span>
+										<span name='name' style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;'>".$resname[0]."</span>
+										<span style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;'>".$resfullname[0]."</span>
+										<span style='font-size:medium;padding-left: 5px; font-weight: 500; letter-spacing: 0.035em;display: block; margin-top: 10px;'>".$resphone[0]."</span>
+                					</div>
+									<form method='post' action='celtools.php?day=$day&month=$month' class='change-form'>
+										<input class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$resdate[0].">
+										<input class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$restime[0].">
+										<textarea class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' disabled>$resad[0]</textarea>
+										<select class='select' name='e_id'>
+									";
+						
+									$empl = mysql_query("select id_employee from employee");
+									while($resempl = mysql_fetch_array($empl)){
+										$e_surname = mysql_query("select e_surname from employee where id_employee='$resempl[0]'");
+										$resesurname = mysql_fetch_array($e_surname);
+										$e_name = mysql_query("select left(e_name,1) from employee where id_employee='$resempl[0]'");
+										$resename = mysql_fetch_array($e_name);
+										$e_fullname = mysql_query("select left(e_fullname,1) from employee where id_employee='$resempl[0]'");
+										$resefullname = mysql_fetch_array($e_fullname);
+										
+										
+										echo "<option value='$resempl[0]'>$resesurname[0] $resename[0].$resefullname[0].</option>";
+										
+									
+									}
+						
+									
+								echo "</select>
+								<input class='date' name='idid' id='write_id' style='font-size:medium;padding-left: 10px;' value=".$residwrite[0]." hidden>
+								<div class='form-login-butt'>
 										<input type='submit' name='change-submit' class='btn change-submit' value='Подтвердить' style='margin-top: -8px;'>
 										<input type='submit' name='change-cancel' class='btn change-cancel' value='Отклонить' style='margin-top: -8px;'>
-									 </div>";
+									 </div>
+								";
 						}
 								echo "
 								</form>
@@ -120,13 +154,15 @@
 				
 			}
 			if (isset($_POST['change-submit'])){
-				$surname = $_POST['surname'];
-				$name = $_POST['name'];
 				$id=$_POST['idid'];
-				$date=$_POST['write_date'];
+				$d=$_POST['write_date'];
+				$date = date('Y-m-d', strtotime($d));
+				
 				$time=$_POST['write_time'];
-				$query=mysql_query("UPDATE write_to_order SET varification='1',Date_order='$date',Time_order='$time' WHERE id_write='$id'") or die(mysql_error());
-				echo "Вы подтвердили заявку ";
+				$e_id=$_POST['e_id'];
+				$query=mysql_query("UPDATE write_to_order SET varification='1',id_employee='$e_id', Date_order='$date',Time_order='$time' WHERE id_write='$id'") or die(mysql_error());
+				echo '<script>location.replace("celtools.php");</script>'; exit;
+				//echo "Вы подтвердили заявку ";
 				
 				
 			}
@@ -162,6 +198,14 @@
 				});
  
     }
+	<script>
+		$(document).ready ( function(){
+			$(".time").keyup(function() {
+			 $('#contenInput').text($(".mytext").val());
+			});
+
+		});
+	</script>
 		</script>-->
 		
 	</main>
@@ -200,16 +244,8 @@
 				</div>
 			</form>
 		<div class="overlay_popup"></div>
-	<script>
-		$(document).ready ( function(){
-			$(".time").keyup(function() {
-			 $('#contenInput').text($(".mytext").val());
-			});
-
-		});
-	</script>
-	<script src="js/script.js"></script>
 	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>
 	
