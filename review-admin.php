@@ -18,7 +18,7 @@
 				<ul class="menu">
 					<li><a href="admin.php">Сотрудники</a></li>
 					<li><a class="active5" href="reviews-admin.php">Отзывы</a></li>
-					<li><a href="services.php">Услуги</a></li>
+					<li><a href="ad-service.php">Услуги</a></li>
 					<li><a href="celendar.php">Календарь</a></li>
 					<?php
 					if (isset($_POST['logsubmit'])){

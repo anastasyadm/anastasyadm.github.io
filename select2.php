@@ -12,22 +12,22 @@ while($i<$c){
 		if($resunits[0]=='п. м.'){
 				echo "
 				
-					<input type='text' class='date' id='metr' name='metr' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Сколько метров?'>
-					<input name='idid' value='$resprice[0]' hidden>
+					<input type='text' class='date metr' id='metr' name='metr' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Сколько метров?'>
+					<input class='price' name='idid' value='$resprice[0]' hidden>
 				";
 		} 
 		if($resunits[0]=='кв. м.'){
 			
-				echo "<input type='text' class='date' id='width' name='width' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Ширина'>
-				<input type='text' class='date' id='height' name='height' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Высота'>
-				<input name='idid' value='$resprice[0]' hidden>
+				echo "<input type='text' class='date width' id='width' name='width' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Ширина'>
+				<input type='text' class='date height' id='height' name='height' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Высота'>
+				<input class='price' name='idid' value='$resprice[0]' hidden>
 				";
 		}
 		if($resunits[0]=='шт.'){
 			echo "
 				
-					<input type='text' class='date' id='sh' name='sh' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Сколько штук?'>
-					<input id='price' name='price' value='$resprice[0]' hidden>
+					<input type='text' class='date sh' id='sh' name='sh' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' placeholder='Сколько штук?'>
+					<input class='price' id='price' name='price' value='$resprice[0]' hidden>
 				";
 			
 		}
@@ -53,12 +53,12 @@ $('.cal3').ready ( function(){
 			cell['price'] = input.value;
 			cell['sh'] = input.value;*/
 			
-			var cell['metr'] = $('#metr').val();
-			var cell['width'] = $('#width').val();
-			var cell['height'] = $('#height').val();
-			var cell['price'] = $('#price').val();
+			var cell['metr'] = $(this).val();
+			var cell['width'] = $(this).val();
+			var cell['height'] = $(this).val();
+			var cell['price'] = $(this).val();
 			alert(cell['price']);
-			var cell['sh'] = $('#sh').val();
+			var cell['sh'] = $(this).val();
 		
 			if(cell['metr'] === undefined){
 				metr=0;

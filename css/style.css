@@ -61,6 +61,8 @@ a {
 table {
     border-collapse:collapse;
     border-spacing:0;
+	width: 100%;
+	margin-top: -15px;
 }
 .tabletd{
 	height: 50px;
@@ -69,6 +71,17 @@ table {
 }
 .tabletd a{
 	color:#2d527c;
+}
+.td{
+	text-align: center;
+    vertical-align: top;
+    padding-top: 10px;
+}
+tr{
+ background-color: #eee;	
+}
+tr:nth-child(2n){
+	background-color: #cee8fa;
 }
 
 hr {
@@ -375,6 +388,16 @@ nav {
 ul.menu li a {
   padding-right: 18px;
   font-size: inherit;
+  position: relative;
+  color: #000000;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  transition: color 0.6s ease;
+}
+.table-title{
+  text-align: center;
+  padding-right: 18px;
+  font-size: 20px;
   position: relative;
   color: #000000;
   font-weight: 500;
@@ -1584,6 +1607,28 @@ box-sizing: border-box;
   border: 2px solid #d7dcde;
   border-radius: 3px;
   padding: 0 13px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.units{
+	width: 70px;
+    text-align: center;
+}
+.inname{
+	width: 150px;
+	text-align: center;
+}
+.textarea{
+	text-align: center;
+	width: 220px;
+  height: 50px;
+  border: 2px solid #d7dcde;
+  border-radius: 3px;
+  padding: 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

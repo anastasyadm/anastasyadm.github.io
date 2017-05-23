@@ -19,7 +19,7 @@
 				<ul class="menu">
 					<li><a class="active" href="admin.php">Сотрудники</a></li>
 					<li><a href="review-admin.php">Отзывы</a></li>
-					<li><a href="#">Услуги</a></li>
+					<li><a href="ad-service.php">Услуги</a></li>
 					<li><a href="celendar.php">Календарь</a></li>
 					<?php
 					if (isset($_POST['logsubmit'])){
