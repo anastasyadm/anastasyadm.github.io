@@ -94,7 +94,7 @@
 			}
 			echo "
 				</div>
-			<div class='cal cal3'></div>
+			<div class='cal cal3' id='mymenu'></div>
 			";
 			?>		
 						
