@@ -1229,7 +1229,7 @@ box-sizing: border-box;
   left: -15px;
 }
 .abtn {
-  margin-left: 205px;
+  width: 200px;
   padding: 0 10px;
   display: block;
   font-size: 12px;
@@ -1239,6 +1239,7 @@ box-sizing: border-box;
   text-transform: uppercase;
   text-align: center;
   border-radius: 3px;
+  border: none;
   font-weight: 500;
   transition: background-color 0.6s ease;
 }
@@ -1463,7 +1464,8 @@ box-sizing: border-box;
 }
 
 .feedback-form,
-.regist-form{
+.regist-form,
+.review-form{
   display: none;
   position: fixed;
   width: 630px;
@@ -1518,7 +1520,7 @@ box-sizing: border-box;
   box-sizing: border-box;
   font-size: 0;
 }
-.review-form, 
+ 
 .celendar-form,
 {
   display: none;

@@ -352,8 +352,8 @@
 		<p class="adress">
 		  <label for="adress">Адрес:</label><input type="text" id="adress" name="adress" placeholder="г.Коммунар, Ижорская ул. д.24">
 		</p>
-		<p class="date">
-		  <label for="date">Желательная дата:</label><input type="date" id="date" name="date">
+		<p class="formdate">
+		  <label for="formdate">Желательная дата:</label><input type="date" id="formdate" name="formdate">
 		</p>
 		<p class="time">
 		  <label for="time">Желательное время:</label><input type="text" id="time" name="time" placeholder="15:00" pattern="[0-9]{2}:[0-9]{2}">

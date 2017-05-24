@@ -68,19 +68,19 @@
 										<div>
 											<div class='aboutme'>
 												<label for='mysurname'>Ваша фамилия:*</label>
-												<input class='mysurname' id='mysurname' name='mysurname' value='".$ressurname[0]."' required>
+												<input class='mysurname' id='mysurname' name='mysurname' value='$ressurname[0]' required>
 												<label for='myname'>Ваше имя:*</label>
-												<input class='myname' id='myname' name='myname' value='".$resname[0]."' required>
+												<input class='myname' id='myname' name='myname' value='$resname[0]' required>
 												<label for='myfullname'>Ваше отчество:</label>
-												<input class='myfullname' id='myfullname' name='myfullname' value='".$resfullname[0]."'>
+												<input class='myfullname' id='myfullname' name='myfullname' value='$resfullname[0]'>
 											</div>
 											<div class='aboutme'>
 												<label for='myemail'>Ваш e-mail:*</label>
-												<input class='myemail' id='myemail' name='myemail' value='".$resemail[0]."' required>
+												<input class='myemail' id='myemail' name='myemail' value='$resemail[0]' required>
 												<label for='myadress'>Ваш адрес:</label>
-												<input class='myadress' id='myadress' name='myadress' value='".$resadress[0]."'>
+												<input class='myadress' id='myadress' name='myadress' value='$resadress[0]'>
 												<label for='myphone'>Ваш номер телефона:*</label>
-												<input class='myphone' id='myphonee' name='myphone' value='".$resphone[0]."' required>
+												<input class='myphone' id='myphonee' name='myphone' value='$resphone[0]' required>
 											</div>
 											<p class='' style='margin-top: 15px; font-weight: 500;'>Хотите изменить пароль?</p>
 											<div class='aboutme' style='margin-top: 25px;'>
@@ -155,7 +155,7 @@
 								<div class='review-wrapper'>
 									<form method='post' action='me.php' class='text-form'>
 										<textarea rows='5' id='text_review' name='text_review'>$res[0]</textarea>
-										<input name='id' value=".$result[0]." hidden>
+										<input name='id' value='$result[0]' hidden>
 										<div class='form-butt' style='text-align:center;'>
 											<input type='submit' name='text-submit' class='btn text-submit' value='Дополнить' style='margin-left: 20px;'>
 											<input type='submit' name='text-cancel' class='btn ch-cancel' value='Удалить отзыв' style='margin-top: 25px; margin-left: 20px;'>
@@ -204,9 +204,9 @@
 							echo "<div class='item-img-wrapper'>";
 						} 					
 									echo "<form method='post' action='me.php' class='change-form'>
-											<input type='text' class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$resadress[0]." disabled>
-											<input type='text' class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$restime[0]." disabled>
-											<input type='text' class='date' style='font-size:medium;padding-left: 10px;' value=".$resdate[0]." disabled>
+											<input type='text' class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resadress[0]' disabled>
+											<input type='text' class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$restime[0]' disabled>
+											<input type='text' class='date' style='font-size:medium;padding-left: 10px;' value='$resdate[0]'' disabled>
 											<input name='idid' value='$result[0]' hidden>
 									</form>
 								</div>

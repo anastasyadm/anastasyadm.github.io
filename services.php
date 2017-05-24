@@ -14,9 +14,9 @@
 			
 			<nav>
 				<ul class="menu">
-					<li><a class="active" href="index.php">О компании</a></li>
-					<li><a href="review-admin.php">Отзывы</a></li>
-					<li><a href="services.php">Услуги</a></li>
+					<li><a href="index.php">О компании</a></li>
+					<li><a href="review.php">Отзывы</a></li>
+					<li><a class="active4" href="services.php">Услуги</a></li>
 					<li><a href="index.php#contacts">Контакты</a></li>
 					<?php
 					if (isset($_POST['logsubmit'])){
@@ -26,13 +26,10 @@
 					
 					if($_SESSION['author']==True){
 						echo "<li class='user-block'>
-							<a class='cabinet' href='#'>Личный кабинет</a>
-							<ul class='mycabinet'>
-				      	
-								<li class='cabinettools'>
-				      		<a href='index.php?log_out='go''>Выйти</a>
-				      	</li>
-				      </ul>
+							<a class='cabinet' href='me.php'>Личный кабинет</a>
+							</li>
+				     	<li style='float:right; margin-right: 10px;'>
+							<a href='index.php?log_out='go' style='margin-right: 10px;'>Выйти</a>
 						</li>";
 					}
 					else{
@@ -49,6 +46,7 @@
 	</header>
 	<main>
 		<div class="container">	
+			<div style='width: 100%;'>
 		<?php
 			echo "
 				<form method='post' action='services.php'>
@@ -66,7 +64,7 @@
 				
 					";
 			}
-			echo "<input type='submit' class='btn' name='mysub' value='Далее'>
+			echo "<input type='submit' class='abtn' name='mysub' value='Далее'>
 				</div>
 			</form>
 			";
@@ -77,7 +75,7 @@
 				$count = count($name);
 				$i=0;
 				echo "
-						<div class='cal cal2'>";
+						<div class='cal cal2' >";
 				while($i<$count){
 					$about = mysql_query("select about_service from service where name_service='$name[$i]'") or die(mysql_error());
 					while($resabout = mysql_fetch_array($about)){
@@ -89,7 +87,7 @@
 					}
 				$i++;
 				}
-				echo "<input type='submit' class='btn click' name='subsub' value='Далее'>";
+				echo "<input type='submit' class='abtn click' name='subsub' value='Далее'>";
 				
 			}
 			echo "
@@ -97,7 +95,7 @@
 			<div class='cal cal3' id='mymenu'></div>
 			";
 			?>		
-						
+				</div>		
 			</div>
 		<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
 		<script src="js/script.js"></script>

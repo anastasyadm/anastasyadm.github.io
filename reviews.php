@@ -79,19 +79,12 @@
 			<div class="eTimer"></div>
       <div class="row catalog">
         <div class="col">
-          <div class="sorting">
-            <p class="sorting-title">Сортировать:</p>
-            <ul class="sorting-list">
-              <li><a href="#" class="sorting-text">По цене</a></li>
-              <li><a href="#" class="sorting-text">По типу</a></li>
-              <li><a href="#" class="sorting-text">По функционалу</a></li>
+          <div class="sorting">    
 				<?php
 				if($_SESSION['author']==True){
-			  		echo"<li><a class='btn abtn show_popup' href='#popup3'>Оставить отзыв</a></li>";
+			  		echo"<a class='btn abtn show_popup' href='#popup3'>Оставить отзыв</a>";
 				}
 				?>
-            </ul>
-
             <div class="sorting-controls">
               <a href="#" class="icon-down-dir active"></a>
               <a href="#" class="icon-up-dir"></a>
@@ -130,15 +123,9 @@
 
           
 
-      </div>
-    </div>
-	<div class="pagination">
-            <p class="active">1</p>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a class="next" href="#">Следующая</a>
-          </div>
-        </div>
+      		</div>
+		</div>
+	</div>
   </main>
 
 <!-- Map & contacts -->
@@ -157,29 +144,6 @@
 			</div>
 		</div>
 	</div>
-
-<!-- Footer -->
-  <!--<footer>
-    <div class="container">
-      <div class="row">
-
-        <div class="col col1">
-          <div class="social-icons">
-            <a class="icon-vk" href="https://vk.com/" target="_blank">Vk</a>
-            <a class="icon-facebook" href="https://www.facebook.com/" target="_blank">Fb</a>
-            <a class="icon-instagram" href="https://instagram.com/" target="_blank">Insta</a>
-          </div>
-        </div>
-
-        <div class="col col2">
-          <p class="friendship-title">Давайте дружить, это выгодно!</p>
-          <p class="friendship-text">Скидка 10% для друзей из социальных сетей</p>
-        </div>
-
-      </div>
-    </div>
-  </footer>-->
-<!-- Registration form -->
 	<form action="reviews.php" method="post" class="regist-form popup" id="popup2">
 		<p class="name">
 			<label for="name">Ваше имя:</label><input type="text" id="name" name="name" placeholder="Имя">
