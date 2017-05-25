@@ -16,37 +16,34 @@
  			
  			<nav>
  				<ul class="menu">
- 					<li><a class="active" href="index.php">О компании</a></li>
+ 					<li><a href="index.php">О компании</a></li>
  					<li><a href="review-admin.php">Отзывы</a></li>
- 					<li><a href="services.php">Услуги</a></li>
- 					<li><a href="index.php#contacts">Контакты</a></li>
+ 					<li><a class="active4" href="services.php">Услуги</a></li>
+ 					<li><a href="celendar.php">Календарь</a></li>
  					<?php
  					if (isset($_POST['logsubmit'])){
  						log_in();}
  					if (isset($_POST['submit'])){
            				registration();}
  					
- 					if($_SESSION['author']==True){
- 						echo "<li class='user-block'>
- 							<a class='cabinet' href='#'>Личный кабинет</a>
- 							<ul class='mycabinet'>
- 				      	
- 								<li class='cabinettools'>
- 				      		<a href='index.php?log_out='go''>Выйти</a>
- 				      	</li>
- 				      </ul>
- 						</li>";
- 					}
- 					else{
- 						echo "
- 						<a class='icon-basket' href='#'>Войти</a>
- 						<a class='regist' href='#' style='padding-right:10px;' href='#'>Регистрация</a>
- 						";
- 					}
+ 					if($_SESSION['admin']==True){
+						echo "<li class='user-block'>
+							<a class='cabinet' href='adme.php'>Личный кабинет</a>
+				      	</li>
+				     	<li style='float:right; margin-right: 10px;'>
+							<a href='index.php?log_out='go' style='margin-right: 10px;'>Выйти</a>
+						</li>";
+					}
+					else{
+						echo "
+						<a class='icon-basket' href='#'>Войти</a>
+						<a class='icon-regist' href='#' style='padding-right:10px;' href='#'>Регистрация</a>
+						";
+					}
  					?>
  				</ul>
  			</nav>
- 			<a class="header-logo" href="index.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
+ 			<a class="header-logo" href="admin.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
  		</div>
  	</header>
  	<main>
@@ -80,7 +77,7 @@
 								<td class='td'><textarea class='textarea' rows='5' id='text_review' name='text_review'>$resabout[0]</textarea></td>
 								<td class='td'><input type='text' class='date units' id='write_date' name='write_date' value='$resunits[0]'></td>
 								<td class='td'><input type='text' class='date units' id='write_date' name='write_date' value='$resprice[0]'></td>
-								<td class='td'><input type='submit' name='text-submit' class='btn text-submit' value='Изменить'></td>
+								<td class='td'><input type='submit' name='text-submit' class='btn text-submit' value='Изменить' style='border: none;'></td>
 							
      					</tr>
  					

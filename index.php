@@ -77,9 +77,7 @@
 									if($_SESSION['author']==True){
 										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
 									}
-									else{
-										echo "<a class='btn' href='#'>Узнать больше</a>";
-									}
+									
 									?>
 							</div>
 						</div>
@@ -91,9 +89,7 @@
 									if($_SESSION['author']==True){
 										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
 									}
-									else{
-										echo "<a class='btn' href='#'>Узнать больше</a>";
-									}
+									
 									?>
 							</div>
 						</div>
@@ -105,9 +101,7 @@
 									if($_SESSION['author']==True){
 										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
 									}
-									else{
-										echo "<a class='btn' href='#'>Узнать больше</a>";
-									}
+									
 									?>
 							</div>
 						</div>
@@ -119,9 +113,7 @@
 									if($_SESSION['author']==True){
 										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
 									}
-									else{
-										echo "<a class='btn' href='#'>Узнать больше</a>";
-									}
+									
 									?>
 							</div>
 						</div>
@@ -133,9 +125,7 @@
 									if($_SESSION['author']==True){
 										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
 									}
-									else{
-										echo "<a class='btn' href='#'>Узнать больше</a>";
-									}
+									
 									?>
 							</div>
 						</div>
@@ -304,19 +294,19 @@
 <!-- Registration form -->
 	<form action="index.php" method="post" class="regist-form popup" id="popup2">
 		<p class="name">
-			<label for="name">Ваше имя:</label><input type="text" id="name" name="name" placeholder="Имя">
+			<label for="name">Ваше имя:</label><input type="text" id="name" name="name" placeholder="Имя" required>
 		</p>
 		<p class="surname">
-			<label for="surname">Ваша фамилия:</label><input type="text" id="surname" name="surname" placeholder="Фамилия">
+			<label for="surname">Ваша фамилия:</label><input type="text" id="surname" name="surname" placeholder="Фамилия" required>
 		</p>
 		<p class="e-mail">
-			<label for="email">Ваш e-mail:</label><input type="email" id="email" name="email">
+			<label for="email">Ваш e-mail:</label><input type="email" id="email" name="email" required>
 		</p>
 		<p class="password">
-			<label for="password">Пароль:</label><input type="password" id="password" name="password" >
+			<label for="password">Пароль:</label><input type="password" id="password" name="password" required>
 		</p>
 		<p class="phone">
-			<label for="phone">Телефон:</label><input type="text" id="phone" name="phone" pattern="[0-9]{11}" placeholder="891122222222">
+			<label for="phone">Телефон:</label><input type="text" id="phone" name="phone" title="Пример 89113456789" pattern="[0-9]{11}" placeholder="891122222222" required>
 		</p>
 		<div class="form-butt">
 			<input type="submit" id="submit" name="submit" class="btn feedback-submit" value="Зарегистрировать">

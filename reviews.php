@@ -85,10 +85,6 @@
 			  		echo"<a class='btn abtn show_popup' href='#popup3'>Оставить отзыв</a>";
 				}
 				?>
-            <div class="sorting-controls">
-              <a href="#" class="icon-down-dir active"></a>
-              <a href="#" class="icon-up-dir"></a>
-            </div>
           </div>
 
           <!-- Item cards -->
@@ -107,8 +103,8 @@
             			<div class='item-card'>
               				<div class='item-img-wrapper'>
                 				<div class='item-header'>
-                  					<span style='font-size:medium'>".$resname[0]."</span>
-									<span style='font-size:medium;padding-left: 10px;'>".$resdate[0]."</span>
+                  					<span style='font-size:medium;font-weight: 500;'>".$resname[0]."</span>
+									<span style='font-size:medium;padding-left: 10px; font-weight: 500;'>".$resdate[0]."</span>
                 				</div>
 								<span style='font-size:15px;'>".$resreview[0]."</span>
               				</div>

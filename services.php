@@ -15,7 +15,7 @@
 			<nav>
 				<ul class="menu">
 					<li><a href="index.php">О компании</a></li>
-					<li><a href="review.php">Отзывы</a></li>
+					<li><a href="reviews.php">Отзывы</a></li>
 					<li><a class="active4" href="services.php">Услуги</a></li>
 					<li><a href="index.php#contacts">Контакты</a></li>
 					<?php
@@ -50,7 +50,7 @@
 		<?php
 			echo "
 				<form method='post' action='services.php'>
-					<div class='cal'>
+					<div class='cal cal1'>
 				";
 			$name = mysql_query("select distinct name_service from service");
 			$count=0;
@@ -58,7 +58,7 @@
 				$count++;
 				echo "
 						<div style='display:block'>
-							<input type='checkbox' class='cb' name='name_service[]'  value='$result[0]'/>
+							<input type='checkbox' id='cb$count' class='cb' name='name_service[]'  value='$result[0]'/>
 							<label for='cb$count'>$result[0]</label>
 						</div>
 				
@@ -79,9 +79,10 @@
 				while($i<$count){
 					$about = mysql_query("select about_service from service where name_service='$name[$i]'") or die(mysql_error());
 					while($resabout = mysql_fetch_array($about)){
+						$count++;
 						echo "<div style='display:block'>
-								<input type='checkbox' class='about_service' name='about_service[]'  value='$resabout[0]'/>
-								<label for='cb$count'>$resabout[0]</label>
+								<input type='checkbox' id='cr$count' class='about_service' name='about_service[]'  value='$resabout[0]'/>
+								<label for='cr$count'>$resabout[0]</label>
 							 </div>
 							";
 					}

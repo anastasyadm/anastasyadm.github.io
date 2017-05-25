@@ -44,7 +44,7 @@
 					?>
 				</ul>
 			</nav>
-			<a class="header-logo" href="index.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
+			<a class="header-logo" href="admin.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
 		</div>
 	</header>
 	<main>
@@ -76,11 +76,11 @@
 				
 				
 			?> 
-			<table border=1 cellspacing=0 cellpadding=2 style="width:900px"> 
- 				<tr>
-  					<td colspan=7> 
-   					<table width="100%" border=0 cellspacing=0 cellpadding=0 style="margin-bottom: 25px;"> 
-    					<tr> 
+			<table border=1 cellspacing=0 cellpadding=2 style="width:900px; margin-top: 30px"> 
+ 				<tr style="background-color:white;">
+  					<td colspan=7 > 
+   					<table width="100%" border=0 cellspacing=0 cellpadding=0 style="margin-bottom: 25px; background-color:white;"> 
+    					<tr style="background-color:white;"> 
      						<td align="left" class="tablename"><a href="<? echo $prev ?>">&lt;&lt;&lt;</a></td> 
      						<td align="center" class="tablename"><? echo $month_names[$m-1]," ",$y ?></td> 
      						<td align="right" class="tablename"><a href="<? echo $next ?>">&gt;&gt;&gt;</a></td> 
@@ -88,7 +88,8 @@
    					</table> 
   					</td> 
  				</tr> 
- 				<tr><td class="tablename">Пн</td>
+ 				<tr style="background-color:white;">
+					<td class="tablename">Пн</td>
 					<td class="tablename">Вт</td>
 					<td class="tablename">Ср</td>
 					<td class="tablename">Чт</td>
@@ -99,7 +100,7 @@
 				<? 
   			for($d=$start;$d<=$end;$d++) { 
 				if (!($i++ % 7)) echo " <tr>\n";
-    				echo '  <td class="tabletd" align="center">';
+    				echo '  <td class="tabletd" align="center" style="background-color:white;">';
     				if ($d < 1 OR $d > $day_count) {
       					echo "&nbsp";
 					} 

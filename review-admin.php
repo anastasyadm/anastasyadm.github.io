@@ -43,7 +43,7 @@
 					?>
 				</ul>
 			</nav>
-			<a class="header-logo" href="index.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
+			<a class="header-logo" href="admin.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
 		</div>
 	</header>
 	<main>
@@ -63,8 +63,8 @@
             			<div class='item-card'>
               				<div class='item-img-wrapper'>
                 				<div class='item-header'>
-                  					<span style='font-size:medium'>".$resname[0]."</span>
-									<span style='font-size:medium;padding-left: 10px;'>".$resdate[0]."</span>
+                  					<span style='font-size:medium;font-weight: 500;'>".$resname[0]."</span>
+									<span style='font-size:medium;padding-left: 10px;font-weight: 500;'>".$resdate[0]."</span>
                 				</div>
 								<span style='font-size:15px;'>".$resreview[0]."</span>
 								<form method='post' action='review-admin.php' class='forbutt' style='text-align:center;'>

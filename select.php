@@ -27,6 +27,6 @@
 		$i+=3; 
 	}
 	$summ = $res+$temp+$wid;
-	echo $summ;
+	echo "<p class='table-title' style='margin-top: 15px;'>Стоимость:$summ руб.</p>";
 
 ?>

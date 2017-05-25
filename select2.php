@@ -37,9 +37,10 @@ while($i<$c){
 	$i++;
 	
 }
-echo "<input type='submit' class='abtn click2' name='submit' value='Далее'>
+echo "<input type='submit' class='abtn click2' name='submit' value='Далее' style='margin-left: 25px;'>
 
-<div class='result'></div>";
+<div class='result'>
+</div>";
 
 ?>
 <script>
