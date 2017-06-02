@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Remokon - отзывы</title>
+  <title>Remokon - Отзывы</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500,700,300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/minilogo.png" width="15" height="25" type="image/x-icon">
@@ -90,6 +90,7 @@
           <!-- Item cards -->
 			<?php
 			$reviews = mysql_query("select id_review from review");
+			$rew = $_GET['rew'];
 			while($result = mysql_fetch_array($reviews)){
 				$id_client = mysql_query("select id_client from review where id_review='$result[0]'");
 				$resid = mysql_fetch_array($id_client);
@@ -99,9 +100,11 @@
 				$resreview = mysql_fetch_array($review);
 				$date = mysql_query("select date_format(date, \"%d.%m.%y\") from review where id_review='$result[0]'");
 				$resdate = mysql_fetch_array($date);
-				echo "<div class='items'>
-            			<div class='item-card'>
-              				<div class='item-img-wrapper'>
+				if($rew == $resid[0]){
+					echo "
+					<div class='items'>
+						<div class='item-card'>
+							<div class='item-img-wrapper' style='background-color:#cee8fa'>
                 				<div class='item-header'>
                   					<span style='font-size:medium;font-weight: 500;'>".$resname[0]."</span>
 									<span style='font-size:medium;padding-left: 10px; font-weight: 500;'>".$resdate[0]."</span>
@@ -110,9 +113,26 @@
               				</div>
             			</div>
 					</div>
-				";
-				
+					";
+				}
+				else{
+					echo "<div class='items'>
+						<div class='item-card'>
+							<div class='item-img-wrapper'>
+                				<div class='item-header'>
+                  					<span style='font-size:medium;font-weight: 500;'>".$resname[0]."</span>
+									<span style='font-size:medium;padding-left: 10px; font-weight: 500;'>".$resdate[0]."</span>
+                				</div>
+								<span style='font-size:15px;'>".$resreview[0]."</span>
+              				</div>
+            			</div>
+					</div>";
+				}
 			}
+					
+				
+				
+			
 			
 			?>
           
@@ -136,7 +156,7 @@
 				<p class="contacts-address">188322, г.Коммунар, Ижорская ул. д.24</p>
 				<p class="contacts-phone">тел. +7 (911) 925-25-79</p>
 				<p class="contacts-phone">тел. +7 (911) 924-24-69</p>
-				<a class="btn contacts-btn show_popup" href="#popup4">Напишите нам</a>
+				
 			</div>
 		</div>
 	</div>

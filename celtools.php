@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Remokon - главная</title>
+  <title>Remokon - Заявки</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/minilogo.png" width="15" height="25" type="image/x-icon">
@@ -49,6 +49,14 @@
 	</header>
 	<main>
 		<div class="container">
+			<div class="blocks">
+				<div class="palegreen" style="background: palegreen; height: 20px; width: 20px; margin-bottom: 30px; display:inline-block;">
+					<p style="margin-left: 30px; display: inherit;">Заявка одобрена</p>
+				</div>
+				<div class="eee" style="background: #eee; height: 20px; width: 20px; margin-bottom: 30px; display:inline-block;     margin-left: 100px;">
+					<p style="margin-left: 30px; display: inherit;">Заявка не рассмотрена</p>
+				</div>
+			</div>
 		<?php
 		$day=$_GET['day'];
 		$month=$_GET['month'];
@@ -72,6 +80,8 @@
 				$resdate = mysql_fetch_array($date);
 				$adress = mysql_query("select adress from write_to_order where id_write='$residwrite[0]'");
 				$resad = mysql_fetch_array($adress);
+				$mess = mysql_query("select komment from write_to_order where id_write='$residwrite[0]'");
+				$resmess = mysql_fetch_array($mess);
 				$count++;
 			
 				$color = mysql_query("select id_write from write_to_order where id_write='$residwrite[0]' and varification='1'");
@@ -93,6 +103,7 @@
 									<input class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$resdate[0]." disabled>
 									<input class='date time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$restime[0]." disabled>
 									<textarea class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' disabled>$resad[0]</textarea>
+									<textarea class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' disabled>$resmess[0]</textarea>
 							";
 							$id_empl = mysql_query("select id_employee from write_to_order where id_employee>0 and id_write='$residwrite[0]'");
 							while($resid_empl = mysql_fetch_array($id_empl)){
@@ -117,6 +128,7 @@
 										<input class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$resdate[0].">
 										<input class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value=".$restime[0].">
 										<textarea class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' disabled>$resad[0]</textarea>
+										<textarea class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' disabled>$resmess[0]</textarea>
 										<select class='select' name='e_id'>
 									";
 						
@@ -172,42 +184,7 @@
 			}
 			
 		?>
-		</div>
-		
-		
-
-		<!--<script>
-			function call() {
-				var date = $("#write_date").val();
-				var time = $("#write_time").val();
-				var id = $("#write_id").val();
- 	  			var msg   = $('#formx').serialize();
-        		$.ajax({
-				  type: 'POST',
-				  url: 'select.php',
-				  data: {date:date,
-				   time:time,
-				   id:id
-				  },
-				  success: function() {
-					$('.item-img-wrapper').css("background-color","palegreen");
-				  },
-				  error:  function(xhr, str){
-					alert('Возникла ошибка: ' + xhr.responseCode);
-				  }
-				});
- 
-    }
-	<script>
-		$(document).ready ( function(){
-			$(".time").keyup(function() {
-			 $('#contenInput').text($(".mytext").val());
-			});
-
-		});
-	</script>
-		</script>-->
-		
+		</div>		
 	</main>
 	<form action="index.php" method="post" class="regist-form" id="popup2">
 				<p class="name">

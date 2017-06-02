@@ -49,7 +49,6 @@ $('.cal3').ready ( function(){
 	$('.click2').click(function(){
 
 			var cnt = document.getElementById('mymenu').getElementsByClassName('metr').length;
-			//while(cnt > 0){
 				var metr = [];
 				var width = [];
 				var sh = [];
@@ -69,47 +68,17 @@ $('.cal3').ready ( function(){
   					sh[r]=($(element).val());
 					r++;
 				});
-				/*cell['metr'] = $('.metr').val();
-				cell['width'] = $('.width').val();
-				cell['height'] = $('.height').val();
-				cell['price'] = $('.price').val();
-				cell['sh'] = $('.sh').val();*/
-				/*cell['metr'] = input.value;
-				cell['width'] = input.value;
-				cell['height'] = input.value;
-				cell['price'] = input.value;
-				cell['sh'] = input.value;*/
-
-				/*var cell['metr'] = $(this).val();
-				var cell['width'] = $(this).val();
-				var cell['height'] = $(this).val();
-				var cell['price'] = $(this).val();
-				alert(cell['price']);
-				var cell['sh'] = $(this).val();*/
-
+				
 				if(metr === undefined){
 					metr=0;
 				}
 				if(width === undefined){
 					width=0;
 				}
-				/*if(height===undefined){
-					height=0;
-				}*/
+				
 				if(sh === undefined){
 					sh=0;
 				}
-			/*alert(metr);
-			alert(width);
-			
-			alert(sh);
-				//cnt--;
-			//}
-			/*alert(cell['metr']);
-			alert(cell['width']);
-			alert(cell['height']);
-			alert(cell['price']);
-			alert(cell['sh']);*/
 					$.ajax({
 						url: 'select.php',
 						type: 'post',

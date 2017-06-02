@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Remokon - главная</title>
+  <title>Remokon - Календарь</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/minilogo.png" width="15" height="25" type="image/x-icon">
@@ -110,26 +110,14 @@
         					echo '<a class="atable" href="#">'.$d.'</a>'; 
       						} 
 						else {
-        					echo $d;
+        					echo "<p style='font-size: 20px;'>$d";
       					}
-						
-						//$m=$_GET['m'];
-						$count=0;
-						$write = mysql_query("select id_write from write_to_order") or die(mysql_error());
+						$write = mysql_query("SELECT DAY(Date_order),COUNT(*) AS total FROM write_to_order where month(Date_order)='$m' GROUP BY DAY(Date_order) ORDER BY total") or die(mysql_error());
 						while($reswrite = mysql_fetch_array($write)){
-							$month = mysql_query("select month(date_order) from write_to_order where id_write='$reswrite[0]'") or die(mysql_error());
-							$resmonth = mysql_fetch_array($month);
-							
-							$count++;
-							if($resmonth[0]==$m){
-								//echo $m;
-								//echo $resmonth[0];
-								$date = mysql_query("select day(date_order) from write_to_order where id_write='$reswrite[0]'") or die(mysql_error());
-								$resdate = mysql_fetch_array($date);
-								if ($d==$resdate[0]){
-									echo "<a class='star' href='celtools.php?day=$d&month=$m'>&#10052;</a>";
-								}
+							if ($d==$reswrite[0]){
+								echo "<a href='celtools.php?day=$d&month=$m'><sup><small style='border: 2px solid #fb565a;padding: 2px 6px;border-radius: 50%;font-size: 13px;vertical-align: top;'>$reswrite[1]</small></sup></a></p>";									
 							}
+							
 						}
     				} 
     			echo "</td>\n";

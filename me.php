@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Remokon - главная</title>
+  <title>Remokon - Личный кабинет</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/minilogo.png" width="15" height="25" type="image/x-icon">
@@ -46,6 +46,33 @@
 				<div class="block about_me">
 					<p class='friendship-title'>Обо мне</p>
 					<?php
+					if (isset($_POST['sub-submit'])){
+						$id = $_SESSION['id_user'];
+						$oldpass=$_POST['oldpass'];
+							//echo $oldpass;
+						$pass=$_POST['pass'];
+							//echo $pass;
+						$newpass=$_POST['newpass'];
+							//echo $newpass;
+						$p = mysql_query("select password from client where id_client='$id'") or die(mysql_error());
+						$password = mysql_fetch_array($p);
+						
+						if($oldpass==$password[0]){
+							if($pass==$newpass){
+								mysql_query("UPDATE client SET 
+											password='$pass' WHERE id_client='$id'") or die(mysql_error());
+								echo "<p style='text-align:center;margin-top:15px;'>Пароль успешно изменен</p>";
+							}
+							else{
+								echo "<p style='text-align:center;margin-top:15px;'>Пароли не совпадают</p>";
+							}
+
+						}
+						else{
+							echo "<p style='text-align:center;margin-top:15px;'>Старый пароль не верен</p>";
+						}
+					}
+					
 					$count==0;
 					$id = $_SESSION['id_user'];
 					$name = mysql_query("select name from client where id_client='$id'");
@@ -90,6 +117,9 @@
 												<input type='password' class='pass' id='pass' name='pass' required>
 												<label for='newpass'>Повторите пароль:</label>
 												<input type='password' class='newpass' id='newpass' name='newpass' required>
+												<div>
+													<input type='submit' name='sub-submit' class='btn change-submit' value='Изменить' style='margin-top: -8px;'>
+												</div>
 											</div>
 										</div>
 										
@@ -115,12 +145,7 @@
 							$adress=$_POST['myadress'];
 							$phone=$_POST['myphone'];
 							
-							$oldpass=$_POST['oldpass'];
-							//echo $oldpass;
-							$pass=$_POST['pass'];
-							//echo $pass;
-							$newpass=$_POST['newpass'];
-							//echo $newpass;
+							
 							mysql_query("UPDATE client SET 
 										surname='$surname', 
 										name='$name', 
@@ -130,14 +155,7 @@
 										phone='$phone'
 										WHERE id_client='$id'") or die(mysql_error());
 							
-							$p = mysql_query("select password from client where id_client='$id'") or die(mysql_error());
-							//echo $p;
-							if($oldpass==$password){
-								if($pass==$newpass){
-									mysql_query("UPDATE client SET 
-										password='$pass' WHERE id_client='$id'") or die(mysql_error());
-								}
-							}
+							
 						echo '<script>location.replace("me.php");</script>'; exit;
 						}
 					?>
@@ -183,6 +201,15 @@
 				</div>
 				<div class="block writes">
 					<p class='friendship-title'>Запись на замер</p>
+					<div class="blocks">
+						<div class="palegreen" style="background: palegreen; height: 20px; width: 20px; margin-bottom: 30px; display:inline-block;">
+						<p style="margin-left: 30px; display: inherit;">Заявка одобрена</p>
+						</div>
+						<div class="eee" style="background: #eee; height: 20px; width: 20px; margin-bottom: 30px; display:inline-block;     margin-left: 100px;">
+							<p style="margin-left: 30px; display: inherit;">Заявка не рассмотрена</p>
+						</div>
+					</div>
+					
 					<?php
 					$write = mysql_query("select id_write from write_to_order where id_client='".$_SESSION['id_user']."'");
 					while($result = mysql_fetch_array($write)){
@@ -192,28 +219,62 @@
 						$resdate = mysql_fetch_array($date);
 						$time = mysql_query("select date_format(time_order, \"%H:%i\") from write_to_order where id_write='$result[0]'");
 						$restime = mysql_fetch_array($time);
+						$mess = mysql_query("select komment from write_to_order where id_write='$result[0]'");
+						$resmess = mysql_fetch_array($mess);
 						
 						$color = mysql_query("select id_write from write_to_order where id_write='$result[0]' and varification='1'");
 						$rescol = mysql_fetch_array($color);
-						echo "<div class='items'>
-							<div class='item-card'>";
 						if($rescol!=0){
-							echo "<div class='item-img-wrapper' style='background-color:palegreen;'>";
-						}
-						else{
-							echo "<div class='item-img-wrapper'>";
-						} 					
-									echo "<form method='post' action='me.php' class='change-form'>
-											<input type='text' class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resadress[0]' disabled>
-											<input type='text' class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$restime[0]' disabled>
-											<input type='text' class='date' style='font-size:medium;padding-left: 10px;' value='$resdate[0]'' disabled>
+						echo "<div class='items'>
+								<div class='item-card'>
+									<div class='item-img-wrapper' style='background-color:palegreen;'>
+										<form method='post' action='me.php' class='change-form'>
+											<input type='text' class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resadress[0]' disabled>
+											<input type='text' class='date time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$restime[0]' disabled>
+											<input type='text' class='date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resdate[0]' disabled>
+											<textarea class='textarea' rows='5' disabled>$resmess[0]</textarea>
 											<input name='idid' value='$result[0]' hidden>
 									</form>
 								</div>
 							</div>
 						</div>
+									
+							";
+						}
+						else{
+							echo "<div class='items'>
+									<div class='item-card'>
+										<div class='item-img-wrapper'>
+										<form method='post' action='me.php' class='change-form'>
+											<input type='text' class='date' id='write_adress' name='write_adress' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resadress[0]'>
+											<input type='text' class='date time' id='write_time' name='write_time' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$restime[0]'>
+											<input type='text' class='date' id='write_date' name='write_date' style='font-size:medium;padding-left: 10px; margin-bottom: 10px;' value='$resdate[0]'>
+											<textarea class='textarea' rows='5' id='mess' name='mess' style='margin-bottom: 10px;'>$resmess[0]</textarea>
+											<input name='idid' value='$result[0]' hidden>
+											<input type='submit' name='write-submit' class='btn text-submit' value='Изменить' style='width: 200px;margin-left: 10px;'>
+											<input type='submit' name='write-cancel' class='btn ch-cancel' value='Удалить запись' style='margin-top: 10px; width: 200px;margin-left: 10px;'>
+									</form>
+								</div>
+							</div>
+						</div>
 					";
-
+						}
+					}
+					if (isset($_POST['write-submit'])){
+						$id = $_POST['idid'];
+						$adress = $_POST['write_adress'];
+						$time = $_POST['write_time'];
+						$date = $_POST['write_date'];
+						$mess = $_POST['mess'];
+						mysql_query("UPDATE write_to_order SET 
+										adress='$adress', date_order='$date', time_order='$time', komment='$mess' WHERE id_write='$id'") or die(mysql_error());
+						echo '<script>location.replace("me.php");</script>'; exit;
+						}
+					if (isset($_POST['write-cancel'])){
+						//$count++;
+						$id=$_POST['idid'];
+						mysql_query("DELETE FROM write_to_order WHERE id_write='$id'") or die(mysql_error());
+						echo '<script>location.replace("me.php");</script>'; exit;
 					}
 
 					?>

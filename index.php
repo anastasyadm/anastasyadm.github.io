@@ -40,7 +40,7 @@
 					else{
 						echo "
 						<a class='icon-basket show_popup' href='#popup1'>Войти</a>
-						<a class='regist show_popup' href='#popup2' style='padding-right:10px;' href='#'>Регистрация</a>
+						<a class='regist show_popup' href='#popup2' style='padding-right:10px;'>Регистрация</a>
 						";
 					}
 					?>
@@ -139,12 +139,14 @@
 		if (isset($_POST['write-submit'])){	
     		$id_user=$_SESSION['id_user'];
     		$adress=$_POST['adress'];
-			$date=$_POST['date'];
+			$date=$_POST['formdate'];
+			
     		$time=$_POST['time'];
+			$message=$_POST['message'];
 			if($count==0){
     		$query=mysql_query("INSERT INTO write_to_order
-            			VALUES(default, '$id_user', default,default,
-             				'$adress','$date', '$time')") or die(mysql_error());
+            			VALUES(default, default, default, '$id_user',
+             			'$adress','$date', '$time','$message')") or die(mysql_error());
 			$count++;
 			echo "<p style='text-align:center;margin-top:15px;'>Вы успешно записаны</p>";
 			}
@@ -155,15 +157,6 @@
 
     <!-- Services block -->
 		<div class="container">
-			<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-			<script src="http://e-timer.ru/js/etimer.js"></script>
-			<script type="text/javascript">
-			jQuery(document).ready(function() {
-				jQuery(".eTimer").eTimer({
-				etType: 2, etDate: "27.05.2017.0.0", etTitleText: "До окончания акции осталось:", etTitleSize: 15, etShowSign: 1, etSep: ":", etFontFamily: "Arial", etTextColor: "white", etPaddingTB: 15, etPaddingLR: 15, etBackground: "#eeeeee", etBorderSize: 0, etBorderRadius: 2, etBorderColor: "white", etShadow: " 0px 0px 10px 0px #eeeeee", etLastUnit: 3, etNumberFontFamily: "Arial", etNumberSize: 35, etNumberColor: "white", etNumberPaddingTB: 0, etNumberPaddingLR: 8, etNumberBackground: "#fb565a", etNumberBorderSize: 0, etNumberBorderRadius: 5, etNumberBorderColor: "white", etNumberShadow: "inset 0px 0px 0px 0px rgba(0, 0, 0, 0.5)"
-				});
-			});
-			</script>
 			<div class="eTimer"></div>
 			<div class="row services">
 				<div class="col col1">
@@ -255,7 +248,7 @@
 				<p class="contacts-address">188322, г.Коммунар, Ижорская ул. д.24</p>
 				<p class="contacts-phone">тел. +7 (911) 925-25-79</p>
 				<p class="contacts-phone">тел. +7 (911) 924-24-69</p>
-				<a href="#popup4" class="btn contacts-btn show_popup">Напишите нам</a>
+				<!--<a href="#popup4" class="btn contacts-btn show_popup">Напишите нам</a>-->
 			</div>
 		</div>
 	</div>
@@ -306,7 +299,7 @@
 			<label for="password">Пароль:</label><input type="password" id="password" name="password" required>
 		</p>
 		<p class="phone">
-			<label for="phone">Телефон:</label><input type="text" id="phone" name="phone" title="Пример 89113456789" pattern="[0-9]{11}" placeholder="891122222222" required>
+			<label for="phone">Телефон:</label><input type="text" id="phone" name="phone" title="Пример 89107654321" pattern="[0-9]{11}" placeholder="89107654321" required>
 		</p>
 		<div class="form-butt">
 			<input type="submit" id="submit" name="submit" class="btn feedback-submit" value="Зарегистрировать">
@@ -317,10 +310,10 @@
 <!-- login form-->
 	<form action="index.php" method="POST" class="login-form popup" id="popup1">
 		<p class="e-mail">
-			<label for="logemail">Ваш e-mail:</label><input type="email" id="logemail" name="logemail">
+			<label for="logemail">Ваш e-mail:</label><input type="email" id="logemail" name="logemail" required>
 		</p>
 		<p class="password">
-			<label for="logpassword">Пароль:</label><input type="password" id="logpassword" name="logpassword" >
+			<label for="logpassword">Пароль:</label><input type="password" id="logpassword" name="logpassword" required>
 		</p>
 		<div class="form-login-butt">
 			<input type="submit" name="logsubmit" class="btn feedback-submit" value="Войти">
@@ -348,7 +341,11 @@
 		<p class="time">
 		  <label for="time">Желательное время:</label><input type="text" id="time" name="time" placeholder="15:00" pattern="[0-9]{2}:[0-9]{2}">
 		</p>
-		<div class="form-btns">
+		<p>
+			<label for="message">Что будем ремонтировать?:</label>
+			<textarea id="message" name="message" placeholder="Изготовление и установка глухого окна ПВХ" style="width: 460px;height: 60px;padding: 5px;"></textarea>
+		</p>
+		<div class="form-btns" style="margin-top:25px">
 		  <input type="submit" id="write-submit" name="write-submit" class="btn write-submit" value="Записать">
 		  <a href="#" class="btn write-cancel modal_close">Отмена</a>
 		</div>
@@ -357,6 +354,15 @@
 	
 
 <!-- Javascript -->
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="js/etimer.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+				$('.eTimer').eTimer({
+				etType: 2, etDate: "20.06.2017.0.0", etTitleText: "До окончания акции осталось:", etTitleSize: 15, etShowSign: 1, etSep: ":", etFontFamily: "Arial", etTextColor: "white", etPaddingTB: 15, etPaddingLR: 15, etBackground: "#eeeeee", etBorderSize: 0, etBorderRadius: 2, etBorderColor: "white", etShadow: " 0px 0px 10px 0px #eeeeee", etLastUnit: 3, etNumberFontFamily: "Arial", etNumberSize: 35, etNumberColor: "white", etNumberPaddingTB: 0, etNumberPaddingLR: 8, etNumberBackground: "#fb565a", etNumberBorderSize: 0, etNumberBorderRadius: 5, etNumberBorderColor: "white", etNumberShadow: "inset 0px 0px 0px 0px rgba(0, 0, 0, 0.5)"
+				});
+			});
+	</script>
 	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
 	<script src="owlcarousel/owl.carousel.min.js"></script>
 	<script src="js/script.js"></script>

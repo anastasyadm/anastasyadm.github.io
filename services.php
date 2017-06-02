@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Remokon - главная</title>
+  <title>Remokon - Услуги</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="img/minilogo.png" width="15" height="25" type="image/x-icon">
@@ -34,8 +34,8 @@
 					}
 					else{
 						echo "
-						<a class='icon-basket' href='#'>Войти</a>
-						<a class='regist' href='#' style='padding-right:10px;' href='#'>Регистрация</a>
+						<a class='icon-basket show_popup' href='#popup2'>Войти</a>
+						<a class='regist show_popup' style='padding-right:10px;' href='#popup1'>Регистрация</a>
 						";
 					}
 					?>
@@ -98,6 +98,42 @@
 			?>		
 				</div>		
 			</div>
+		<div class="overlay_popup"></div>
+	<form action="services.php" method="post" class="regist-form popup" id="popup1">
+		<p class="name">
+			<label for="name">Ваше имя:</label><input type="text" id="name" name="name" placeholder="Имя" required>
+		</p>
+		<p class="surname">
+			<label for="surname">Ваша фамилия:</label><input type="text" id="surname" name="surname" placeholder="Фамилия" required>
+		</p>
+		<p class="e-mail">
+			<label for="email">Ваш e-mail:</label><input type="email" id="email" name="email" required>
+		</p>
+		<p class="password">
+			<label for="password">Пароль:</label><input type="password" id="password" name="password" required>
+		</p>
+		<p class="phone">
+			<label for="phone">Телефон:</label><input type="text" id="phone" name="phone" title="Пример 89107654321" pattern="[0-9]{11}" placeholder="89107654321" required>
+		</p>
+		<div class="form-butt">
+			<input type="submit" id="submit" name="submit" class="btn feedback-submit" value="Зарегистрировать">
+			<a href="#" class="btn regist-cancel modal_close">Отмена</a>
+		</div>
+	</form>
+	
+<!-- login form-->
+	<form action="services.php" method="POST" class="login-form popup" id="popup2">
+		<p class="e-mail">
+			<label for="logemail">Ваш e-mail:</label><input type="email" id="logemail" name="logemail" required>
+		</p>
+		<p class="password">
+			<label for="logpassword">Пароль:</label><input type="password" id="logpassword" name="logpassword" required>
+		</p>
+		<div class="form-login-butt">
+			<input type="submit" name="logsubmit" class="btn feedback-submit" value="Войти">
+			<a href="#" class="btn login-cancel modal_close">Отмена</a>
+		</div>
+	</form>
 		<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
 		<script src="js/script.js"></script>
 		<script>
