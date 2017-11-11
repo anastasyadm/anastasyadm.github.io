@@ -351,13 +351,13 @@
 <!-- Javascript -->
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="js/etimer.js"></script>
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
 		jQuery(document).ready(function() {
 				$('.eTimer').eTimer({
 				etType: 2, etDate: "20.06.2017.0.0", etTitleText: "До окончания акции осталось:", etTitleSize: 15, etShowSign: 1, etSep: ":", etFontFamily: "Arial", etTextColor: "white", etPaddingTB: 15, etPaddingLR: 15, etBackground: "#eeeeee", etBorderSize: 0, etBorderRadius: 2, etBorderColor: "white", etShadow: " 0px 0px 10px 0px #eeeeee", etLastUnit: 3, etNumberFontFamily: "Arial", etNumberSize: 35, etNumberColor: "white", etNumberPaddingTB: 0, etNumberPaddingLR: 8, etNumberBackground: "#fb565a", etNumberBorderSize: 0, etNumberBorderRadius: 5, etNumberBorderColor: "white", etNumberShadow: "inset 0px 0px 0px 0px rgba(0, 0, 0, 0.5)"
 				});
 			});
-	</script>
+	</script>-->
 	<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
 	<script src="owlcarousel/owl.carousel.min.js"></script>
 	<script src="js/script.js"></script>
