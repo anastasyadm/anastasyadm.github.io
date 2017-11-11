@@ -105,7 +105,8 @@
 		<?php 
 		$count=0;
 		if (isset($_POST['write-submit'])){	
-    		$id_user=$_SESSION['id_user'];
+    		$name_user=$_POST['name_user'];
+			$phone = $_POST['phone'];
     		$adress=$_POST['adress'];
 			$date=$_POST['formdate'];
 			
@@ -113,11 +114,33 @@
 			$message=$_POST['message'];
 			if($count==0){
     		$query=mysql_query("INSERT INTO write_to_order
-            			VALUES(default, default, default, '$id_user', '$phone',
+            			VALUES(default, default, default, '$name_user', '$phone',
              			'$adress','$date', '$time','$message')") or die(mysql_error());
 			$count++;
 			echo "<p style='text-align:center;margin-top:15px;'>Вы успешно записаны</p>";
 			}
+			require_once 'sms.ru.php';
+
+			/*$smsru = new SMSRU('B82C0C23-A495-17F8-18B8-B57A04A48FC0'); // Ваш уникальный программный ключ, который можно получить на главной странице
+
+			$data = new stdClass();
+			$data->to = '79111740999';
+			$data->text = "Имя клиента:$name_user \nТелефон:$phone \nАдрес:$adress \nДата:$date \nВремя:$time \nСообщение:$message"; // Текст сообщения
+			// $data->from = ''; // Если у вас уже одобрен буквенный отправитель, его можно указать здесь, в противном случае будет использоваться ваш отправитель по умолчанию
+			// $data->time = time() + 7*60*60; // Отложить отправку на 7 часов
+			// $data->translit = 1; // Перевести все русские символы в латиницу (позволяет сэкономить на длине СМС)
+			// $data->test = 1; // Позволяет выполнить запрос в тестовом режиме без реальной отправки сообщения
+			// $data->partner_id = '1'; // Можно указать ваш ID партнера, если вы интегрируете код в чужую систему
+			$sms = $smsru->send_one($data); // Отправка сообщения и возврат данных в переменную
+
+			/*if ($sms->status == "OK") { // Запрос выполнен успешно
+				echo "Сообщение отправлено успешно. ";
+				echo "ID сообщения: $sms->sms_id.";
+			} else {
+				echo "Сообщение не отправлено. ";
+				echo "Код ошибки: $sms->status_code. ";
+				echo "Текст ошибки: $sms->status_text.";
+			}*/
 			
 		}
 		?>
@@ -292,8 +315,8 @@
 	
 	<form action="index.php" method="POST" class="write-form popup" id="popup3">
 		<p class="input-name">
-      		<label for="input-name">Ваше имя:</label>
-		<input type='text' id='write-name' name='write-name'>
+      		<label for="name_user">Ваше имя:</label>
+			<input type='text' id='name_user' name='name_user'>
     	</p>
     	<p class="phone">
 		  <label for="phone">Телефон:</label><input type="text" id="phone" name="phone" pattern="[0-9]{11}" placeholder="89107654321" required>
