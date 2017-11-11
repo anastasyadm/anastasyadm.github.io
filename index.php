@@ -316,25 +316,31 @@
 	<form action="index.php" method="POST" class="write-form popup" id="popup3">
 		<p class="input-name">
       		<label for="name_user">Ваше имя:</label>
-			<input type='text' id='name_user' name='name_user'>
+			<input type='text' id='name_user' name='name_user' required>
     	</p>
     	<p class="phone">
 		  <label for="phone">Телефон:</label><input type="text" id="phone" name="phone" pattern="[0-9]{11}" placeholder="89107654321" required>
 		</p>
 		<p class="adress">
-		  <label for="adress">Адрес:</label><input type="text" id="adress" name="adress">
+		  <label for="adress">Адрес:</label><input type="text" id="adress" name="adress" required>
 		</p>
 		<p class="formdate">
-		  <label for="formdate">Желательная дата:</label><input type="date" id="formdate" name="formdate">
+		  <label for="formdate">Желательная дата:</label><input type="date" id="formdate" name="formdate" required>
 		</p>
 		<p class="time">
-		  <label for="time">Желательное время:</label><input type="text" id="time" name="time" placeholder="15:00" pattern="[0-9]{2}:[0-9]{2}">
+		  <label for="time">Желательное время:</label><input type="text" id="time" name="time" placeholder="15:00" pattern="[0-9]{2}:[0-9]{2}" required>
 		</p>
 		<p>
 			<label for="message">Что будем ремонтировать?:</label>
 			<textarea id="message" name="message" placeholder="Изготовление и установка глухого окна ПВХ" style="width: 460px;height: 60px;padding: 5px;"></textarea>
 		</p>
-		<div class="form-btns" style="margin-top:25px">
+		<p>
+				<input type='checkbox' id='cb$count' class='cb' name='name_service' required/>
+				<label for='cb$count'>Я СОГЛАСЕН на обработку и хранение моих персональных данных, указанных мною в
+форме обратной связи на сайте в соответствии с условиями настоящего
+согласия на обработку персональных данных.</label>
+		</p>
+		<div class="form-btns" style="margin-top:0px">
 		  <input type="submit" id="write-submit" name="write-submit" class="btn write-submit" value="Записать">
 		  <a href="#" class="btn write-cancel modal_close">Отмена</a>
 		</div>

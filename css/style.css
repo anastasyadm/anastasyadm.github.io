@@ -1600,11 +1600,11 @@ input[type=checkbox]:checked:disabled+label:before{
   display: none;
   position: fixed;
   width: 630px;
-  height: 480px;
+  height: 630px;
   background-color: #ffffff;
   -webkit-box-shadow: 0 20px 40px 0 rgba(0, 1, 1, 0.75);
           box-shadow: 0 20px 40px 0 rgba(0, 1, 1, 0.75);
-  top: 50%;
+  top: 35%;
   left: 50%;
   margin-top: -208px;
   margin-left: -310px;
