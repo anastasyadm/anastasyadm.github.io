@@ -13,35 +13,25 @@
 <!-- Header -->
   <header>
  		<div class="container">
+			<div class="container">
+			
 			<nav>
 				<ul class="menu">
 					<li><a href="index.php">О компании</a></li>
 					<li><a class="active2" href="reviews.php">Отзывы</a></li>
-					<li><a href="services.php">Услуги</a></li>
+					<li><a href="services.php">Калькулятор</a></li>
 					<li><a href="#contacts">Контакты</a></li>
-					<?php
-					if (isset($_POST['logsubmit'])){
-						log_in();}
-					if (isset($_POST['submit'])){
-          				registration();}
-					if($_SESSION['author']==True){
-						echo "<li class='user-block'>
-							<a class='cabinet' href='me.php'>Личный кабинет</a>
-				      	</li>
-				     	<li style='float:right; margin-right: 10px;'>
-							<a href='index.php?log_out='go' style='margin-right: 10px;'>Выйти</a>
-						</li>";
-					}
-					else{
-						echo "
-						<a class='icon-basket show_popup' href='#popup1'>Войти</a>
-						<a class='regist show_popup' href='#popup2' style='padding-right:10px;'>Регистрация</a>
-						";
-					}
-					?>
+					
+					<li class='user-block'>
+						<a class='cabinet' href='service2.php'>Услуги</a>
+				    </li>
+				    <li>
+						<a href='sale.php'>Акции</a>
+					</li>
 				</ul>
 			</nav>
 			<a class="header-logo" href="index.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
+		</div>
 		</div>
 	</header>
 
@@ -80,42 +70,24 @@
       <div class="row catalog">
         <div class="col">
           <div class="sorting">    
-				<?php
-				if($_SESSION['author']==True){
-			  		echo"<a class='btn abtn show_popup' href='#popup3'>Оставить отзыв</a>";
-				}
-				?>
-          </div>
+			  	<a class='btn abtn show_popup' href='#popup3'>Оставить отзыв</a>
+			</div>
 
           <!-- Item cards -->
 			<?php
 			$reviews = mysql_query("select id_review from review");
 			$rew = $_GET['rew'];
 			while($result = mysql_fetch_array($reviews)){
-				$id_client = mysql_query("select id_client from review where id_review='$result[0]'");
-				$resid = mysql_fetch_array($id_client);
-				$name = mysql_query("select name from client where id_client='$resid[0]'");
-				$resname = mysql_fetch_array($name);
+				$name_client = mysql_query("select name_client from review where id_review='$result[0]'");
+				$resname = mysql_fetch_array($name_client);
 				$review = mysql_query("select review from review where id_review='$result[0]'");
 				$resreview = mysql_fetch_array($review);
 				$date = mysql_query("select date_format(date, \"%d.%m.%y\") from review where id_review='$result[0]'");
 				$resdate = mysql_fetch_array($date);
-				if($rew == $resid[0]){
-					echo "
-					<div class='items'>
-						<div class='item-card'>
-							<div class='item-img-wrapper' style='background-color:#cee8fa'>
-                				<div class='item-header'>
-                  					<span style='font-size:medium;font-weight: 500;'>".$resname[0]."</span>
-									<span style='font-size:medium;padding-left: 10px; font-weight: 500;'>".$resdate[0]."</span>
-                				</div>
-								<span style='font-size:15px;'>".$resreview[0]."</span>
-              				</div>
-            			</div>
-					</div>
-					";
-				}
-				else{
+				$var = mysql_query("select var from review where id_review='$result[0]'");
+				$resvar = mysql_fetch_array($var);
+				if($resvar[0] == 1){
+					
 					echo "<div class='items'>
 						<div class='item-card'>
 							<div class='item-img-wrapper'>
@@ -213,12 +185,7 @@
 <form action="reviews.php" method="POST" class="review-form popup" id="popup3">
     <p class="rename">
       <label for="input-name">Ваше имя:</label>
-		<?php 
-		$name = mysql_query("select name from client where id_client='".$_SESSION['id_user']."'") or die(mysql_error());
-    	while($resname = mysql_fetch_array($name)){
-			echo "<input type='text' id='input-name' name='feedback-name' value=".$resname[0]." disabled>";
-		}
-	?>
+		<input type='text' id='input-name' name='feedback-name'>
     </p>
     <p class="reviews">
       <label for="reviews">Ваш отзыв:</label><textarea id="reviews" name="reviews" placeholder="В свободной форме"></textarea>

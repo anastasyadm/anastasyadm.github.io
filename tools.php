@@ -18,7 +18,7 @@ function log_in(){
 		  $_SESSION['admin']=True;
           echo '<script>location.replace("admin.php");</script>'; exit;
 		}
-        if($pass == ($_POST['logpassword'])){
+        /*if($pass == ($_POST['logpassword'])){
           $_SESSION['user_email'] = $_POST['logemail'];
           $mass = mysql_query("select id_client from client where email='".$_SESSION['user_email']."'");
           $id = mysql_fetch_array($mass);
@@ -26,14 +26,14 @@ function log_in(){
           $_SESSION['id_user']=$id_user;
           $_SESSION['author']=True;
           //echo '<script>location.replace("reindex.php");</script>'; exit;
-        }
+        }*/
 		else{
           echo "<p class='error' style='color:red;'>Вы ввели неправильный логин/пароль</p>
 		  ";
         }
 	  }
 }
-function registration(){
+/*function registration(){
 	$username=$_POST['name'];
     $usersurname=$_POST['surname'];
     $useremail=$_POST['email'];
@@ -54,7 +54,7 @@ if(isset($go)){
   session_unset();
   session_destroy();
   echo '<script>location.replace("index.php");</script>'; exit;
-}
+}*/
 
 ?>
 

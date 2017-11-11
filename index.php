@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="yandex-verification" content="6ea04b52d7a65255" />
   <title>Remokon - главная</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
@@ -20,30 +21,15 @@
 				<ul class="menu">
 					<li><a class="active" href="index.php">О компании</a></li>
 					<li><a href="reviews.php">Отзывы</a></li>
-					<li><a href="services.php">Услуги</a></li>
+					<li><a href="services.php">Калькулятор</a></li>
 					<li><a href="#contacts">Контакты</a></li>
-					<?php
-					if (isset($_POST['logsubmit'])){
-						log_in();}
-					if (isset($_POST['submit'])){
-          				registration();}
 					
-					if($_SESSION['author']==True){
-						echo "<li class='user-block'>
-							<a class='cabinet' href='me.php'>Личный кабинет</a>
-				      	</li>
-				     	<li style='float:right; margin-right: 10px;'>
-							<a href='index.php?log_out='go' style='margin-right: 10px;'>Выйти</a>
-						</li>";
-					}
-					
-					else{
-						echo "
-						<a class='icon-basket show_popup' href='#popup1'>Войти</a>
-						<a class='regist show_popup' href='#popup2' style='padding-right:10px;'>Регистрация</a>
-						";
-					}
-					?>
+					<li class='user-block'>
+						<a class='cabinet' href='service2.php'>Услуги</a>
+				    </li>
+				    <li>
+						<a href='sale.php'>Акции</a>
+					</li>
 				</ul>
 			</nav>
 			<a class="header-logo" href="index.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
@@ -73,60 +59,42 @@
 							<div class="slide-text">
 								<div class="slide-title">Регулировка и ремонт фурнитуры</div>
 								<p>Профессиональная инструментальная регулировка оконной фурнитуры.<br>Сложная регулировка створки стеклопакетом(переклинка).<br>Устранение провисаний и притираний.<br>Очистка и смазка, замена фурнитуры.</p>
-									<?php 
-									if($_SESSION['author']==True){
-										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
-									}
 									
-									?>
+									<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>
 							</div>
 						</div>
 						<div class="slide second">
 							<div class="slide-text">
 								<div class="slide-title">Замена и ремонт стеклопакетов</div>
 								<p>Производим замену и установку стеклопакетов любых форм и размеров. Поменяем испорченные и разбитые стеклопакеты или просто установим стекло.</p>
-								<?php 
-									if($_SESSION['author']==True){
-										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
-									}
-									
-									?>
+								
+									<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>
+								
 							</div>
 						</div>
 						<div class="slide third">
 							<div class="slide-text">
 								<div class="slide-title">Замена уплотнителя</div>
 								<p>Смазка, чистка и замена резиновых уплотнителей. Устраним сквозняки, повысим шумоизоляцию.Установим 3 й контур уплотнения от уличной пыли на подоконнике и откосах.</p>
-								<?php 
-									if($_SESSION['author']==True){
-										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
-									}
-									
-									?>
+								
+									<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>
 							</div>
 						</div>
 						<div class="slide fourth">
 							<div class="slide-text">
 								<div class="slide-title">Москитные сетки</div>
 								<p>Изготовим и установим москитные сетки на окна и двери. Защитите себя от комаров, мух и прочей летающей и ползающей живности!</p>
-								<?php 
-									if($_SESSION['author']==True){
-										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
-									}
+								
+									<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>
 									
-									?>
 							</div>
 						</div>
 						<div class="slide fifth">
 							<div class="slide-text">
 								<div class="slide-title">Откосы и подоконники</div>
 								<p>Установим новые и поменяем старые откосы и подоконники. Смонтируем откосы из сэндвич – панелей, прекрасный внешний вид!Герметизация и утепление - забудьте о промерзаниях!</p>
-								<?php 
-									if($_SESSION['author']==True){
-										echo "<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>";
-									}
-									
-									?>
+								
+									<a class='btn write-order show_popup' href='#popup3'>Запись на замер</a>
 							</div>
 						</div>
 					</div>
@@ -145,7 +113,7 @@
 			$message=$_POST['message'];
 			if($count==0){
     		$query=mysql_query("INSERT INTO write_to_order
-            			VALUES(default, default, default, '$id_user',
+            			VALUES(default, default, default, '$id_user', '$phone',
              			'$adress','$date', '$time','$message')") or die(mysql_error());
 			$count++;
 			echo "<p style='text-align:center;margin-top:15px;'>Вы успешно записаны</p>";
@@ -324,16 +292,14 @@
 	
 	<form action="index.php" method="POST" class="write-form popup" id="popup3">
 		<p class="input-name">
-      <label for="input-name">Ваше имя:</label>
-		<?php 
-		$name = mysql_query("select name from client where id_client='".$_SESSION['id_user']."'") or die(mysql_error());
-    	while($resname = mysql_fetch_array($name)){
-			echo "<input type='text' id='write-name' name='write-name' value=".$resname[0]." disabled>";
-		}
-	?>
+      		<label for="input-name">Ваше имя:</label>
+		<input type='text' id='write-name' name='write-name'>
     	</p>
+    	<p class="phone">
+		  <label for="phone">Телефон:</label><input type="text" id="phone" name="phone" pattern="[0-9]{11}" placeholder="89107654321" required>
+		</p>
 		<p class="adress">
-		  <label for="adress">Адрес:</label><input type="text" id="adress" name="adress" placeholder="г.Коммунар, Ижорская ул. д.24">
+		  <label for="adress">Адрес:</label><input type="text" id="adress" name="adress">
 		</p>
 		<p class="formdate">
 		  <label for="formdate">Желательная дата:</label><input type="date" id="formdate" name="formdate">

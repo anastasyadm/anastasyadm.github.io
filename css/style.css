@@ -309,7 +309,7 @@ a {
 }
 
 .container {
-  width: 900px;
+  width: 955px;
   padding: 0 10px;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
@@ -395,7 +395,7 @@ nav,
 
 nav {
   /*margin-right: 20px;*/
-  max-width: 540px;
+  max-width: 605px;
 }
 
 .icon-basket,
@@ -1429,7 +1429,7 @@ input[type=checkbox]:checked:disabled+label:before{
 }
 
 .item-img-wrapper {
-  width: 240px;
+  width: 251px;
   min-height: 270px;
   overflow: hidden;
   background-color: #f1f1f1;
@@ -1578,8 +1578,7 @@ input[type=checkbox]:checked:disabled+label:before{
 
 .feedback-form,
 .regist-form,
-.review-form,
-.write-form{
+.review-form{
   display: none;
   position: fixed;
   width: 630px;
@@ -1596,7 +1595,24 @@ input[type=checkbox]:checked:disabled+label:before{
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 0;
- 
+}
+.write-form{
+  display: none;
+  position: fixed;
+  width: 630px;
+  height: 480px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 20px 40px 0 rgba(0, 1, 1, 0.75);
+          box-shadow: 0 20px 40px 0 rgba(0, 1, 1, 0.75);
+  top: 50%;
+  left: 50%;
+  margin-top: -208px;
+  margin-left: -310px;
+  z-index: 40;
+  padding: 54px 50px 50px 80px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0;
 }
 .write-form2{
   display: none;

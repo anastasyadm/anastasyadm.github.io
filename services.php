@@ -11,37 +11,25 @@
 <body>
  	<header class="admin">
  		<div class="container">
+			<div class="container">
 			
 			<nav>
 				<ul class="menu">
 					<li><a href="index.php">О компании</a></li>
 					<li><a href="reviews.php">Отзывы</a></li>
-					<li><a class="active4" href="services.php">Услуги</a></li>
-					<li><a href="index.php#contacts">Контакты</a></li>
-					<?php
-					if (isset($_POST['logsubmit'])){
-						log_in();}
-					if (isset($_POST['submit'])){
-          				registration();}
+					<li><a class="active4" href="services.php">Калькулятор</a></li>
+					<li><a href="#contacts">Контакты</a></li>
 					
-					if($_SESSION['author']==True){
-						echo "<li class='user-block'>
-							<a class='cabinet' href='me.php'>Личный кабинет</a>
-							</li>
-				     	<li style='float:right; margin-right: 10px;'>
-							<a href='index.php?log_out='go' style='margin-right: 10px;'>Выйти</a>
-						</li>";
-					}
-					else{
-						echo "
-						<a class='icon-basket show_popup' href='#popup2'>Войти</a>
-						<a class='regist show_popup' style='padding-right:10px;' href='#popup1'>Регистрация</a>
-						";
-					}
-					?>
+					<li class='user-block'>
+						<a class='cabinet' href='service2.php'>Услуги</a>
+				    </li>
+				    <li>
+						<a href='sale.php'>Акции</a>
+					</li>
 				</ul>
 			</nav>
 			<a class="header-logo" href="index.php"><img src="img/logo.png" alt="logo" width="330" height="100"></a>
+		</div>
 		</div>
 	</header>
 	<main>

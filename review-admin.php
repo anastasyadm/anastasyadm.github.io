@@ -51,15 +51,36 @@
 		<?php
 			$reviews = mysql_query("select id_review from review");
 			while($result = mysql_fetch_array($reviews)){
-				$id_client = mysql_query("select id_client from review where id_review='$result[0]'");
-				$resid = mysql_fetch_array($id_client);
-				$name = mysql_query("select name from client where id_client='$resid[0]'");
+				$name = mysql_query("select name_client from review where id_review='$result[0]'");
 				$resname = mysql_fetch_array($name);
 				$review = mysql_query("select review from review where id_review='$result[0]'");
 				$resreview = mysql_fetch_array($review);
 				$date = mysql_query("select date_format(date, \"%d.%m.%y\") from review where id_review='$result[0]'");
 				$resdate = mysql_fetch_array($date);
-				echo "<div class='items'>
+				$var = mysql_query("select var from review where id_review='$result[0]'");
+				$resvar = mysql_fetch_array($var);
+				if($resvar[0]==1){
+					echo "<div class='items'>
+            			<div class='item-card'>
+              				<div class='item-img-wrapper' style='background: palegreen;'>
+                				<div class='item-header'>
+                  					<span style='font-size:medium;font-weight: 500;'>".$resname[0]."</span>
+									<span style='font-size:medium;padding-left: 10px;font-weight: 500;'>".$resdate[0]."</span>
+                				</div>
+								<span style='font-size:15px;'>".$resreview[0]."</span>
+								<form method='post' action='review-admin.php' class='forbutt' style='text-align:center;'>
+									<input name='id' value=".$result[0]." hidden>
+									<div class='form-login-butt'>
+										<input type='submit' name='change-cancel' class='btn change-cancel' value='Удалить' style='margin-top: -8px;'>
+									</div>
+								</form>
+              				</div>
+            			</div>
+					</div>
+				";
+				}
+				else
+					echo "<div class='items'>
             			<div class='item-card'>
               				<div class='item-img-wrapper'>
                 				<div class='item-header'>
@@ -69,15 +90,24 @@
 								<span style='font-size:15px;'>".$resreview[0]."</span>
 								<form method='post' action='review-admin.php' class='forbutt' style='text-align:center;'>
 									<input name='id' value=".$result[0]." hidden>
-									<input type='submit' name='text-cancel' class='btn ch-cancel' value='Удалить отзыв'>
+									<div class='form-login-butt'>
+										<input type='submit' name='change-submit' class='btn change-submit' value='Подтвердить' style='margin-top: -8px;'>
+										<input type='submit' name='change-cancel' class='btn change-cancel' value='Удалить' style='margin-top: -8px;'>
+									</div>
 								</form>
               				</div>
             			</div>
 					</div>
 				";
 				
+				
 			}
-			if (isset($_POST['text-cancel'])){
+			if (isset($_POST['change-submit'])){
+				$id=$_POST['id'];
+				$query=mysql_query("UPDATE review SET var='1' WHERE id_review='$id'") or die(mysql_error());
+				echo '<script>location.replace("review-admin.php");</script>'; exit;
+			}
+			if (isset($_POST['change-cancel'])){
 				$id=$_POST['id'];
 				mysql_query("DELETE FROM review WHERE id_review='$id'") or die(mysql_error());
 				echo '<script>location.replace("review-admin.php");</script>'; exit;

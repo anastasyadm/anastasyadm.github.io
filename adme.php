@@ -31,14 +31,14 @@
 						echo "<li class='user-block'>
 							<a class='cabinet active3' href='adme.php'>Личный кабинет</a>
 				      	</li>
-				     	<li style='float:right; margin-right: 10px;'>
+				     	<li style='float:right; margin-right: 60px;'>
 							<a href='index.php?log_out='go'>Выйти</a>
 						</li>";
 					}
 					else{
 						echo "
 						<a class='icon-basket' href='#'>Войти</a>
-						<a class='icon-regist' href='#' style='padding-right:10px;' href='#'>Регистрация</a>
+						<a class='icon-regist' href='#' style='padding-right:60px;' href='#'>Регистрация</a>
 						";
 					}
 					?>

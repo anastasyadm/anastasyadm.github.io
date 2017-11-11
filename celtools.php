@@ -63,15 +63,10 @@
 		$idwrite = mysql_query("select id_write from write_to_order where day(date_order)='$day' and month(date_order)='$month'");
 		$count=0;
 		while($residwrite = mysql_fetch_array($idwrite)){
-				$id_client = mysql_query("select id_client from write_to_order where id_write='$residwrite[0]'");
-				$resid = mysql_fetch_array($id_client);
-				$name = mysql_query("select name from client where id_client='$resid[0]'");
+				$name = mysql_query("select name_client from write_to_order where id_write='$residwrite[0]'");
 				$resname = mysql_fetch_array($name);
-				$surname = mysql_query("select surname from client where id_client='$resid[0]'");
-				$ressurname = mysql_fetch_array($surname);
-				$fullname = mysql_query("select fullname from client where id_client='$resid[0]'");
-				$resfullname = mysql_fetch_array($fullname);
-				$phone = mysql_query("select phone from client where id_client='$resid[0]'");
+
+				$phone = mysql_query("select phone from write_to_order where id_write='$residwrite[0]'");
 				$resphone = mysql_fetch_array($phone);
 				
 				$time = mysql_query("select date_format(time_order, \"%H:%i\") from write_to_order where id_write='$residwrite[0]'");
@@ -162,6 +157,7 @@
             			</div>
 					</div>
 				";
+				
 			
 				
 			}
